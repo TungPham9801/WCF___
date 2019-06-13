@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="QuanLiCaPhe_Service.MonAnService" CodeBehind="MonAnService.svc.cs" %>

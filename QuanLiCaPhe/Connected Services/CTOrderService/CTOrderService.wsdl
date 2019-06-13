@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CTOrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" />
+      <xs:element name="DoWork">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DoWorkResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCTOder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maOder" type="xs:int" />
+            <xs:element minOccurs="0" name="maBan" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCTOderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getCTOderResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCTOder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maBan" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCTOderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetCTOderResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="MaMon" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maBan" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maOder" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="kiemTraMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraGoiMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maOder" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraGoiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="kiemTraGoiMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraBan">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="soBan" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraBanResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="kiemTraBanResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layDVT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maMon" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layDVTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="layDVTResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="laySoBan">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="MaBan" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="laySoBanResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="laySoBanResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="laySLMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maMon" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maBan" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="laySLMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="laySLMonResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemCTOder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="ct" nillable="true" type="q1:CTOder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemCTOderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ThemCTOderResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NhapSoLuong">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="ct" nillable="true" type="q2:CTOder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NhapSoLuongResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="NhapSoLuongResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="ct" nillable="true" type="q3:CTOder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="XoaMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaCTOder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="ct" nillable="true" type="q4:CTOder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaCTOderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="XoaCTOderResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ChuyenBan">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="ct" nillable="true" type="q5:CTOder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ChuyenBanResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ChuyenBanResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layMaMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maOrder" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layMaMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="layMaMonResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataTable" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTO_QLCP" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="CTOder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DonViTinh" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaBan" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaMon" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaOder" type="xs:int" />
+          <xs:element minOccurs="0" name="SoLuong" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CTOder" nillable="true" type="tns:CTOder" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ICTOrderService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_getCTOder_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCTOder" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_getCTOder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCTOderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_GetCTOder_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCTOder" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_GetCTOder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCTOderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraMon" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraGoiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraGoiMon" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraGoiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraGoiMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraBan_InputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraBan" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_kiemTraBan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraBanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_layDVT_InputMessage">
+    <wsdl:part name="parameters" element="tns:layDVT" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_layDVT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:layDVTResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_laySoBan_InputMessage">
+    <wsdl:part name="parameters" element="tns:laySoBan" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_laySoBan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:laySoBanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_laySLMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:laySLMon" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_laySLMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:laySLMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_ThemCTOder_InputMessage">
+    <wsdl:part name="parameters" element="tns:ThemCTOder" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_ThemCTOder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ThemCTOderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_NhapSoLuong_InputMessage">
+    <wsdl:part name="parameters" element="tns:NhapSoLuong" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_NhapSoLuong_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NhapSoLuongResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_XoaMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:XoaMon" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_XoaMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XoaMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_XoaCTOder_InputMessage">
+    <wsdl:part name="parameters" element="tns:XoaCTOder" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_XoaCTOder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XoaCTOderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_ChuyenBan_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChuyenBan" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_ChuyenBan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChuyenBanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_layMaMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:layMaMon" />
+  </wsdl:message>
+  <wsdl:message name="ICTOrderService_layMaMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:layMaMonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICTOrderService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/DoWork" message="tns:ICTOrderService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/DoWorkResponse" message="tns:ICTOrderService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCTOder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/getCTOder" message="tns:ICTOrderService_getCTOder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/getCTOderResponse" message="tns:ICTOrderService_getCTOder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCTOder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOder" message="tns:ICTOrderService_GetCTOder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOderResponse" message="tns:ICTOrderService_GetCTOder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraMon" message="tns:ICTOrderService_kiemTraMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraMonResponse" message="tns:ICTOrderService_kiemTraMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraGoiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraGoiMon" message="tns:ICTOrderService_kiemTraGoiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraGoiMonResponse" message="tns:ICTOrderService_kiemTraGoiMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraBan">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraBan" message="tns:ICTOrderService_kiemTraBan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraBanResponse" message="tns:ICTOrderService_kiemTraBan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="layDVT">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/layDVT" message="tns:ICTOrderService_layDVT_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/layDVTResponse" message="tns:ICTOrderService_layDVT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="laySoBan">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/laySoBan" message="tns:ICTOrderService_laySoBan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/laySoBanResponse" message="tns:ICTOrderService_laySoBan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="laySLMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/laySLMon" message="tns:ICTOrderService_laySLMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/laySLMonResponse" message="tns:ICTOrderService_laySLMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemCTOder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/ThemCTOder" message="tns:ICTOrderService_ThemCTOder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/ThemCTOderResponse" message="tns:ICTOrderService_ThemCTOder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NhapSoLuong">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/NhapSoLuong" message="tns:ICTOrderService_NhapSoLuong_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/NhapSoLuongResponse" message="tns:ICTOrderService_NhapSoLuong_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/XoaMon" message="tns:ICTOrderService_XoaMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/XoaMonResponse" message="tns:ICTOrderService_XoaMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaCTOder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/XoaCTOder" message="tns:ICTOrderService_XoaCTOder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/XoaCTOderResponse" message="tns:ICTOrderService_XoaCTOder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChuyenBan">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/ChuyenBan" message="tns:ICTOrderService_ChuyenBan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/ChuyenBanResponse" message="tns:ICTOrderService_ChuyenBan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="layMaMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/layMaMon" message="tns:ICTOrderService_layMaMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/layMaMonResponse" message="tns:ICTOrderService_layMaMon_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICTOrderService" type="tns:ICTOrderService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCTOder">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/getCTOder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCTOder">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/GetCTOder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraMon">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/kiemTraMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraGoiMon">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/kiemTraGoiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraBan">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/kiemTraBan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="layDVT">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/layDVT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="laySoBan">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/laySoBan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="laySLMon">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/laySLMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemCTOder">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/ThemCTOder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NhapSoLuong">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/NhapSoLuong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaMon">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/XoaMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaCTOder">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/XoaCTOder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChuyenBan">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/ChuyenBan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="layMaMon">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/layMaMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CTOrderService">
+    <wsdl:port name="BasicHttpBinding_ICTOrderService" binding="tns:BasicHttpBinding_ICTOrderService">
+      <soap:address location="http://localhost:51914/CTOrderService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

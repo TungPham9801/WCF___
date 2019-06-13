@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HoaDonService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" />
+      <xs:element name="DoWork">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DoWorkResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getHoaDon">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getHoaDonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getHoaDonResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layMaHD">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maOder" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="layMaHDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="layMaHDResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemHD">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="hd" nillable="true" type="q1:HoaDon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemHDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ThemHDResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaHD">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="hd" nillable="true" type="q2:HoaDon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaHDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="XoaHDResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ChuyenBan">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="hd" nillable="true" type="q3:HoaDon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ChuyenBanResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ChuyenBanResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataTable" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTO_QLCP" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="HoaDon">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaBan" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaHD" type="xs:int" />
+          <xs:element minOccurs="0" name="MaOder" type="xs:int" />
+          <xs:element minOccurs="0" name="Ngay" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="HoaDon" nillable="true" type="tns:HoaDon" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IHoaDonService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_getHoaDon_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHoaDon" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_getHoaDon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHoaDonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_layMaHD_InputMessage">
+    <wsdl:part name="parameters" element="tns:layMaHD" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_layMaHD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:layMaHDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_ThemHD_InputMessage">
+    <wsdl:part name="parameters" element="tns:ThemHD" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_ThemHD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ThemHDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_XoaHD_InputMessage">
+    <wsdl:part name="parameters" element="tns:XoaHD" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_XoaHD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XoaHDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_ChuyenBan_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChuyenBan" />
+  </wsdl:message>
+  <wsdl:message name="IHoaDonService_ChuyenBan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChuyenBanResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IHoaDonService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/DoWork" message="tns:IHoaDonService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/DoWorkResponse" message="tns:IHoaDonService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHoaDon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/getHoaDon" message="tns:IHoaDonService_getHoaDon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/getHoaDonResponse" message="tns:IHoaDonService_getHoaDon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="layMaHD">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/layMaHD" message="tns:IHoaDonService_layMaHD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/layMaHDResponse" message="tns:IHoaDonService_layMaHD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemHD">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/ThemHD" message="tns:IHoaDonService_ThemHD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/ThemHDResponse" message="tns:IHoaDonService_ThemHD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaHD">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/XoaHD" message="tns:IHoaDonService_XoaHD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/XoaHDResponse" message="tns:IHoaDonService_XoaHD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChuyenBan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHoaDonService/ChuyenBan" message="tns:IHoaDonService_ChuyenBan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHoaDonService/ChuyenBanResponse" message="tns:IHoaDonService_ChuyenBan_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IHoaDonService" type="tns:IHoaDonService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHoaDon">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/getHoaDon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="layMaHD">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/layMaHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemHD">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/ThemHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaHD">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/XoaHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChuyenBan">
+      <soap:operation soapAction="http://tempuri.org/IHoaDonService/ChuyenBan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HoaDonService">
+    <wsdl:port name="BasicHttpBinding_IHoaDonService" binding="tns:BasicHttpBinding_IHoaDonService">
+      <soap:address location="http://localhost:51914/HoaDonService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

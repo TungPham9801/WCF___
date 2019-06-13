@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LoaiMonService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" />
+      <xs:element name="DoWork">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DoWorkResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLoaiMon">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetLoaiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetLoaiMonResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KiemTraLoaiMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maLoaiMon" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KiemTraLoaiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="KiemTraLoaiMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemLoaiMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="lm" nillable="true" type="q1:LoaiMon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemLoaiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ThemLoaiMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SuaLoaiMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="lm" nillable="true" type="q2:LoaiMon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SuaLoaiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SuaLoaiMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaLoaiMon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="lm" nillable="true" type="q3:LoaiMon" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaLoaiMonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="XoaLoaiMonResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataTable" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTO_QLCP" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="LoaiMon">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MaLoaiMon" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenLoaiMon" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LoaiMon" nillable="true" type="tns:LoaiMon" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ILoaiMonService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_GetLoaiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoaiMon" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_GetLoaiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoaiMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_KiemTraLoaiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:KiemTraLoaiMon" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_KiemTraLoaiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KiemTraLoaiMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_ThemLoaiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:ThemLoaiMon" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_ThemLoaiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ThemLoaiMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_SuaLoaiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:SuaLoaiMon" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_SuaLoaiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SuaLoaiMonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_XoaLoaiMon_InputMessage">
+    <wsdl:part name="parameters" element="tns:XoaLoaiMon" />
+  </wsdl:message>
+  <wsdl:message name="ILoaiMonService_XoaLoaiMon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XoaLoaiMonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILoaiMonService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/DoWork" message="tns:ILoaiMonService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/DoWorkResponse" message="tns:ILoaiMonService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoaiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/GetLoaiMon" message="tns:ILoaiMonService_GetLoaiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/GetLoaiMonResponse" message="tns:ILoaiMonService_GetLoaiMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KiemTraLoaiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/KiemTraLoaiMon" message="tns:ILoaiMonService_KiemTraLoaiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/KiemTraLoaiMonResponse" message="tns:ILoaiMonService_KiemTraLoaiMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemLoaiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/ThemLoaiMon" message="tns:ILoaiMonService_ThemLoaiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/ThemLoaiMonResponse" message="tns:ILoaiMonService_ThemLoaiMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaLoaiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/SuaLoaiMon" message="tns:ILoaiMonService_SuaLoaiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/SuaLoaiMonResponse" message="tns:ILoaiMonService_SuaLoaiMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaLoaiMon">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoaiMonService/XoaLoaiMon" message="tns:ILoaiMonService_XoaLoaiMon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoaiMonService/XoaLoaiMonResponse" message="tns:ILoaiMonService_XoaLoaiMon_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILoaiMonService" type="tns:ILoaiMonService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoaiMon">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/GetLoaiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KiemTraLoaiMon">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/KiemTraLoaiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemLoaiMon">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/ThemLoaiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaLoaiMon">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/SuaLoaiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaLoaiMon">
+      <soap:operation soapAction="http://tempuri.org/ILoaiMonService/XoaLoaiMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoaiMonService">
+    <wsdl:port name="BasicHttpBinding_ILoaiMonService" binding="tns:BasicHttpBinding_ILoaiMonService">
+      <soap:address location="http://localhost:51914/LoaiMonService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

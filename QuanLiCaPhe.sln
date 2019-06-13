@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiCaPhe", "QuanLiCaPhe\QuanLiCaPhe.csproj", "{08A25250-492E-4066-AB21-C754AADE4CA3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C} = {DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiCaPhe_Service", "QuanLiCaPhe_Service\QuanLiCaPhe_Service.csproj", "{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_QLCP", "DTO_QLCP\DTO_QLCP.csproj", "{D399378C-66A5-4F34-AEFA-CD6160722CA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BUS_QLCP", "BUS_QLCP\BUS_QLCP.csproj", "{56E93CC6-2F8F-430E-B0DE-94E8193CE078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_QLCP", "DAL_QLCP\DAL_QLCP.csproj", "{4A7505FF-77EC-475E-96B6-814AA3CD6F0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08A25250-492E-4066-AB21-C754AADE4CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A25250-492E-4066-AB21-C754AADE4CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A25250-492E-4066-AB21-C754AADE4CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A25250-492E-4066-AB21-C754AADE4CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0C473E-A9D0-4EDC-9BEB-1F42DDE7626C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D399378C-66A5-4F34-AEFA-CD6160722CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D399378C-66A5-4F34-AEFA-CD6160722CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D399378C-66A5-4F34-AEFA-CD6160722CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D399378C-66A5-4F34-AEFA-CD6160722CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E93CC6-2F8F-430E-B0DE-94E8193CE078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E93CC6-2F8F-430E-B0DE-94E8193CE078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E93CC6-2F8F-430E-B0DE-94E8193CE078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E93CC6-2F8F-430E-B0DE-94E8193CE078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A7505FF-77EC-475E-96B6-814AA3CD6F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A7505FF-77EC-475E-96B6-814AA3CD6F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A7505FF-77EC-475E-96B6-814AA3CD6F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A7505FF-77EC-475E-96B6-814AA3CD6F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD27653-8DC1-4511-BBE9-41E5C951E8C7}
+	EndGlobalSection
+EndGlobal

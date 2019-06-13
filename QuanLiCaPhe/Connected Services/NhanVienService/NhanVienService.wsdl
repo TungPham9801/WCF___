@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NhanVienService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" />
+      <xs:element name="DoWork">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DoWorkResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemNV">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="nv" nillable="true" type="q1:NhanVien" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ThemNVResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ThemNVResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDSNV">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDSNVResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getDSNVResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDSNV_theoma">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maNV" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDSNV_theomaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getDSNV_theomaResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraNhanVien">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maNV" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="kiemTraNhanVienResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="kiemTraNhanVienResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SuaNV">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="nv" nillable="true" type="q2:NhanVien" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SuaNVResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SuaNVResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaNV">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DTO_QLCP" minOccurs="0" name="nv" nillable="true" type="q3:NhanVien" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="XoaNVResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="XoaNVResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTO_QLCP" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTO_QLCP" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="NhanVien">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChucVu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiaChi" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GioiTinh" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaNV" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NgaySinh" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SoCM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenNV" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TrinhDo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NhanVien" nillable="true" type="tns:NhanVien" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataTable" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="INhanVienService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_ThemNV_InputMessage">
+    <wsdl:part name="parameters" element="tns:ThemNV" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_ThemNV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ThemNVResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_getDSNV_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDSNV" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_getDSNV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDSNVResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_getDSNV_theoma_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDSNV_theoma" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_getDSNV_theoma_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDSNV_theomaResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_kiemTraNhanVien_InputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraNhanVien" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_kiemTraNhanVien_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kiemTraNhanVienResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_SuaNV_InputMessage">
+    <wsdl:part name="parameters" element="tns:SuaNV" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_SuaNV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SuaNVResponse" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_XoaNV_InputMessage">
+    <wsdl:part name="parameters" element="tns:XoaNV" />
+  </wsdl:message>
+  <wsdl:message name="INhanVienService_XoaNV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:XoaNVResponse" />
+  </wsdl:message>
+  <wsdl:portType name="INhanVienService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/DoWork" message="tns:INhanVienService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/DoWorkResponse" message="tns:INhanVienService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemNV">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/ThemNV" message="tns:INhanVienService_ThemNV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/ThemNVResponse" message="tns:INhanVienService_ThemNV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDSNV">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/getDSNV" message="tns:INhanVienService_getDSNV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/getDSNVResponse" message="tns:INhanVienService_getDSNV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDSNV_theoma">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/getDSNV_theoma" message="tns:INhanVienService_getDSNV_theoma_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/getDSNV_theomaResponse" message="tns:INhanVienService_getDSNV_theoma_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraNhanVien">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/kiemTraNhanVien" message="tns:INhanVienService_kiemTraNhanVien_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/kiemTraNhanVienResponse" message="tns:INhanVienService_kiemTraNhanVien_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaNV">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/SuaNV" message="tns:INhanVienService_SuaNV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/SuaNVResponse" message="tns:INhanVienService_SuaNV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaNV">
+      <wsdl:input wsaw:Action="http://tempuri.org/INhanVienService/XoaNV" message="tns:INhanVienService_XoaNV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INhanVienService/XoaNVResponse" message="tns:INhanVienService_XoaNV_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_INhanVienService" type="tns:INhanVienService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemNV">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/ThemNV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDSNV">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/getDSNV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDSNV_theoma">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/getDSNV_theoma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kiemTraNhanVien">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/kiemTraNhanVien" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaNV">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/SuaNV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaNV">
+      <soap:operation soapAction="http://tempuri.org/INhanVienService/XoaNV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NhanVienService">
+    <wsdl:port name="BasicHttpBinding_INhanVienService" binding="tns:BasicHttpBinding_INhanVienService">
+      <soap:address location="http://localhost:51914/NhanVienService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
