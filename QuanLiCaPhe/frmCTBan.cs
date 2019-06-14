@@ -27,7 +27,7 @@ namespace QuanLiCaPhe
             InitializeComponent();
             txtMaBan.Text = text;
         }
-
+        #region get
         private Oder getOder()
         {
             Oder od = new Oder();
@@ -182,7 +182,8 @@ namespace QuanLiCaPhe
             ct.TongTien = ct.SoLuong * i;
             return ct;
         }
-
+        #endregion
+        #region 1
         private void btnCaPhe_Click(object sender, EventArgs e)
         {
            gbCaPhe.Visible = true;
@@ -191,7 +192,7 @@ namespace QuanLiCaPhe
            gbSua.Visible = false;
            gbThuocLa.Visible = false;
         }
-        #region 1
+
         private void btnNuocNgot_Click(object sender, EventArgs e)
         {
             gbNuocNgot.Visible = true;
@@ -228,6 +229,7 @@ namespace QuanLiCaPhe
             gbThuocLa.Visible = false;
         }
         #endregion
+        #region Load
         private void frmCTBan_Load(object sender, EventArgs e)
         {
             
@@ -282,7 +284,7 @@ namespace QuanLiCaPhe
             //txtMaOder.DataBindings.Add("Text", bindSource, "MaOder");
             dgCTOder.DataSource = bindSource;
         }
-
+        #endregion
         private void btnThoat_Click(object sender, EventArgs e)
         {
             frmSoDoChinh SoDoChinh = new frmSoDoChinh();
@@ -357,7 +359,7 @@ namespace QuanLiCaPhe
                 }
             }
         }
-
+        #region 2
         private void btnKhoangLat_Click(object sender, EventArgs e)
         {
             gbSoLuong.Visible = true;
@@ -387,6 +389,7 @@ namespace QuanLiCaPhe
                     MessageBox.Show("Không thể thêm món");
             binData();
         }
+        #endregion
         private void btnOK_Click(object sender, EventArgs e)
         {
             gbSoLuong.Visible = false;
@@ -460,6 +463,7 @@ namespace QuanLiCaPhe
             binData();
         }
 
+        #region 3
         private void btnTraGung_Click(object sender, EventArgs e)
         {
             gbSoLuong.Visible = true;
@@ -489,7 +493,7 @@ namespace QuanLiCaPhe
                     MessageBox.Show("Không thể thêm món");
             binData();
         }
-
+        #endregion
         private void btnBoMon_Click(object sender, EventArgs e)
         {
             CTOder ct = getCTOder();
@@ -546,7 +550,7 @@ namespace QuanLiCaPhe
             txtMaMon.Text = dgCTOder.Rows[rowSelect].Cells[2].Value.ToString();
             txtSL.Text = dgCTOder.Rows[rowSelect].Cells[3].Value.ToString();
         }
-
+        #region 4
         private void btnSuaChua_Click(object sender, EventArgs e)
         {
             gbSoLuong.Visible = true;
@@ -846,6 +850,7 @@ namespace QuanLiCaPhe
                     MessageBox.Show("Không thể thêm món");
             binData();
         }
+#endregion
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             frmReportHD report;

@@ -2,6 +2,7 @@
 using QuanLiCaPhe.BanCoKhachService;
 using QuanLiCaPhe.BanSDNhieuService;
 using QuanLiCaPhe.CTDoanhThuService;
+using QuanLiCaPhe.CTHoadonService;
 using QuanLiCaPhe.CTOrderService;
 using QuanLiCaPhe.DoanhThuService;
 using QuanLiCaPhe.HoaDonService;
@@ -23,7 +24,7 @@ namespace QuanLiCaPhe
     public partial class frmChiTietBan : Form
     {
         HoaDonServiceClient hoadon = new HoaDonServiceClient();
-        CTHoadonServiceClient cthoadon = new CTHoadonServiceClient();
+        CTHoaDonServiceClient cthoadon = new CTHoaDonServiceClient();
         CTOrderServiceClient ctorder = new CTOrderServiceClient();
         OrderServiceClient orderr = new OrderServiceClient();
         BanCoKhachServiceClient bancokhach = new BanCoKhachServiceClient();
@@ -40,9 +41,46 @@ namespace QuanLiCaPhe
 
         private void btnGoiMon_Click(object sender, EventArgs e)
         {
-            gbThongTin.Visible = true;
-            gbSoLuong.Visible = true;
-            dataGridViewCTOrder.Visible = true;
+            
+            Oder od = getOder();
+            HoaDon hd = getHD();
+            BanCoKhach ban = getBanCoKhach();
+            BanSDNhieu bsd = getBanSDNhieu();
+            if (bancokhach.kiemTraBanCoKhach(ban.MaBan))
+            {
+                gbThongTin.Visible = true;
+                dataGridViewCTOrder.Visible = true;
+            }
+            else
+            {
+                if (orderr.ThemOder(od) == false || bancokhach.ThemBanCoKhach(ban) == false)
+                    MessageBox.Show("Không thể thực hiện gọi món");
+                else
+                {
+                    gbThongTin.Visible = true;
+                    dataGridViewCTOrder.Visible = true;
+                }
+                if (hoadon.ThemHD(hd) == false)
+                    MessageBox.Show("Không thể thêm hóa đơn");
+            }
+            if (bansd.kiemTraTonTai(txtMaBan.Text) == false)
+            {
+                bsd.LuotSD = 1;
+                bansd.ThemBanSDNhieu(bsd);
+            }
+            else
+            {
+                int i = int.Parse(txtMaOder.Text);
+                if (ctorder.kiemTraGoiMon(i) == false)
+                {
+                    string luotsd = bansd.layLuotSD(txtMaBan.Text);
+                    int lsd = 0;
+                    Int32.TryParse(luotsd, out lsd);
+                    int luotsddung = lsd + 1;
+                    bsd.LuotSD = luotsddung;
+                    bansd.SuaLuotSD(bsd);
+                }
+            }
         }
 
         private void frmChiTietBan_Load(object sender, EventArgs e)
@@ -93,6 +131,15 @@ namespace QuanLiCaPhe
             clearbin();
             dataGridViewCTOrder.DataSource = bindSource;
             txtMaOder.DataBindings.Add("Text", bindSource, "MaOder");
+        }
+        private void binData()
+        {
+            BindingSource bindSource = new BindingSource();
+            string maBan = txtMaBan.Text;
+            bindSource.DataSource = ctorder.GetCTOder1(maBan);
+            clearbin();
+            //txtMaOder.DataBindings.Add("Text", bindSource, "MaOder");
+            dataGridViewCTOrder.DataSource = bindSource;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -150,16 +197,16 @@ namespace QuanLiCaPhe
         {
             CTOder ct = new CTOder();
 
-            string maMon = ctorder.layMaMon(txtMaOder.Text);
+            string maMon = cmbMon.SelectedValue.ToString() ;
             int i = 0;
             ct.MaMon = maMon;
             i = int.Parse(txtMaOder.Text);
             ct.MaOder = i;
-            string dvt = "";
+            string dvt ;
             dvt = ctorder.layDVT(maMon);
             ct.MaBan = txtMaBan.Text;
             ct.DonViTinh = dvt;
-            ct.SoLuong = 0;
+            ct.SoLuong = Convert.ToInt32(txtSoLuong.Text);
             return ct;
         }
 
@@ -174,27 +221,27 @@ namespace QuanLiCaPhe
             return hd;
         }
 
-        //private CTHoaDon getCTHD()
-        //{
-            //CTHoaDon cthd = new CTHoaDon();
-            //CTOder ct = getCTOder();
-            //int i = 0;
-            //int maOder = int.Parse(txtMaOder.Text);
-            //Int32.TryParse(cthoadon.layMaHD(maOder), out i);
-            //cthd.MaHD = i;
-            //cthd.MaMon = ct.MaMon;
-            //cthd.TenMon = cthoadon.layTenMon(ct.MaMon);
-            //string soLuong = txtSoLuong.Text;
-            //int sl = 0;
-            //Int32.TryParse(soLuong, out sl);
-            //cthd.SoLuong = sl;
-            //string dg = cthoadon.
-            //float j = 0;
-            //float.TryParse(dg, out j);
-            //cthd.DonGia = j;
-            //cthd.ThanhTien = cthd.SoLuong * cthd.DonGia;
-            //return cthd;
-        //}
+        private CTHoaDon getCTHD()
+        {
+            CTHoaDon cthd = new CTHoaDon();
+            CTOder ct = getCTOder();
+            int i = 0;
+            int maOder = int.Parse(txtMaOder.Text);
+            Int32.TryParse(cthoadon.layMaHD(maOder), out i);
+            cthd.MaHD = i;
+            cthd.MaMon = cmbMon.SelectedValue.ToString();
+            cthd.TenMon = cthoadon.layTenMon(cmbMon.SelectedValue.ToString());
+            string soLuong = txtSoLuong.Text;
+            int sl = 0;
+            Int32.TryParse(soLuong, out sl);
+            cthd.SoLuong = sl;
+            string dg = cthoadon.layDonGia(cmbMon.SelectedValue.ToString());
+            float j = 0;
+            float.TryParse(dg, out j);
+            cthd.DonGia = j;
+            cthd.ThanhTien = cthd.SoLuong * cthd.DonGia;
+            return cthd;
+        }
 
         private DoanhThu getDoanhThu()
         {
@@ -221,7 +268,7 @@ namespace QuanLiCaPhe
             CTDoanhThu ct = new CTDoanhThu();
             CTOder ctod = getCTOder();
             ct.Ngay = Convert.ToDateTime(dtNgay.Value.ToShortDateString());
-            ct.MaMon = ctod.MaMon;
+            ct.MaMon = cmbMon.SelectedValue.ToString() ;
             ct.SoLuong = 0;
             string dongia = ctdoanhthu.layDonGia(ct.MaMon);
             float i = 0;
@@ -229,6 +276,243 @@ namespace QuanLiCaPhe
             ct.TongTien = ct.SoLuong * i;
             return ct;
         }
+
+
         #endregion
+
+        private void btnTinhTien_Click(object sender, EventArgs e)
+        {
+            BanCoKhach bck = getBanCoKhach();
+            Oder od = getOder();
+            CTOder ctod = getCTOder();
+            int i = 0;
+            Int32.TryParse(txtMaOder.Text, out i);
+            ctod.MaOder = i;
+            //gbChonNhom.Visible = false;
+            btnHoaDon.Visible = true;
+            bancokhach.XoaBanCoKhach(bck);
+            ctorder.XoaCTOder(ctod);
+        }
+
+        private void btnHoaDon_Click(object sender, EventArgs e)
+        {
+            frmReportHD report;
+            report = new frmReportHD(txtMaOder.Text, txtMaBan.Text);
+            report.Show();
+            this.Close();
+        }
+
+        private void btnBoMon_Click(object sender, EventArgs e)
+        {
+            //CTOder ct = getCTOder();
+            //CTHoaDon cthd = getCTHD();
+            //CTDoanhThu ctdt = getCTDoanhThu();
+            //if (txtMaMon.Text == "")
+            //    MessageBox.Show("Vui lòng chọn món muốn bỏ!");
+            //else
+            //{
+            //    string sl = ctBO.laySLMon(txtMaMon.Text, txtMaBan.Text);
+            //    int i = 0;
+            //    i = int.Parse(sl);
+            //    int slc = int.Parse(txtSL.Text);
+            //    if (i > 1)
+            //    {
+            //        ct.SoLuong = slc - 1;
+            //        cthd.SoLuong = slc - 1;
+            //        ct.MaOder = int.Parse(txtMaOder.Text);
+            //        ct.MaMon = txtMaMon.Text;
+            //        cthd.MaMon = txtMaMon.Text;
+            //        if (ctBO.NhapSoLuong(ct) == false)
+            //            MessageBox.Show("Không thể bỏ món");
+            //        if (cthdBO.SuaCTHD(cthd) == false)
+            //            MessageBox.Show("Không thể bỏ món trong hóa đơn");
+            //    }
+            //    else
+            //    {
+            //        ct.MaMon = txtMaMon.Text;
+            //        cthd.MaMon = txtMaMon.Text;
+            //        ct.MaBan = txtMaBan.Text;
+            //        if (ctBO.XoaMon(ct) && cthdBO.XoaMon(cthd))
+            //            MessageBox.Show("Đã xóa món");
+            //        else
+            //            MessageBox.Show("Không thể xóa món");
+            //    }
+            //}
+            //ctdt.MaMon = txtMaMon.Text;
+            //int slb = 0;
+            //string slban = ctdtBO.laySLBan(ctdt.MaMon);
+            //Int32.TryParse(slban, out slb);
+            //ctdt.SoLuong = slb - 1;
+            //string dongia = ctdtBO.layDonGia(ctdt.MaMon);
+            //float dg = 0;
+            //float.TryParse(dongia, out dg);
+            //ctdt.TongTien = ctdt.SoLuong * dg;
+            //ctdtBO.SuaCTDoanhThu(ctdt);
+        }
+
+        private void btnChuyenBan_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            Int32.TryParse(txtMaOder.Text, out i);
+            if (ctorder.kiemTraGoiMon(i) == false)
+                MessageBox.Show("Bàn " + txtMaBan.Text + " chưa có khách nên không cần chuyển.");
+            else
+                gbChuyenBan.Visible = true;
+        }
+
+        private void btnOKChuyen_Click(object sender, EventArgs e)
+        {
+            BanCoKhach bck = getBanCoKhach();
+            Oder od = getOder();
+            CTOder ctod = getCTOder();
+            HoaDon hd = getHD();
+            int maod = 0;
+            Int32.TryParse(txtMaOder.Text, out maod);
+            int soban = 0;
+            Int32.TryParse(txtBanChuyen.Text, out soban);
+            string maban = orderr.layMaBan(soban);
+            od.MaBan = maban;
+            ctod.MaBan = maban;
+            hd.MaBan = maban;
+            bck.MaBan = txtMaBan.Text;
+            bancokhach.XoaBanCoKhach(bck);
+            bck.MaBan = maban;
+            if (bancokhach.ThemBanCoKhach(bck) && orderr.ChuyenBan(od) && ctorder.ChuyenBan(ctod) && hoadon.ChuyenBan(hd))
+                MessageBox.Show("Đã chuyển bàn");
+            BanSDNhieu bsd1 = getBanSDNhieu();
+            BanSDNhieu bsd2 = new BanSDNhieu();
+            bsd2.MaBan = txtBanChuyen.Text;
+            string soban2 = bansd.laySoBan(txtBanChuyen.Text);
+            int sb2 = 0;
+            Int32.TryParse(soban2, out sb2);
+            bsd2.SoBan = sb2;
+            string luotsd2 = bansd.layLuotSD(txtBanChuyen.Text);
+            int lsd2 = 0;
+            Int32.TryParse(luotsd2, out lsd2);
+            int luotsddung2 = lsd2 + 1;
+            bsd2.LuotSD = luotsddung2;
+            bansd.SuaLuotSD(bsd2);
+
+            string luotsd1 = bansd.layLuotSD(txtMaBan.Text);
+            int lsd1 = 0;
+            Int32.TryParse(luotsd1, out lsd1);
+            int luotsddung1 = lsd1 + 1;
+            bsd1.LuotSD = luotsddung1;
+            bansd.SuaLuotSD(bsd1);
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            frmSoDoChinh SoDoChinh = new frmSoDoChinh();
+            string maban = txtMaBan.Text;
+            //FromSoDoChinh = new frmSoDoChinh();
+            BanCoKhach bck = getBanCoKhach();
+            Oder od = getOder();
+            CTOder ctod = getCTOder();
+            HoaDon hd = getHD();
+            CTHoaDon cthd = getCTHD();
+            BanSDNhieu bsd = getBanSDNhieu();
+            bck.MaBan = txtMaBan.Text;
+            int i = int.Parse(txtMaOder.Text);
+            od.MaOder = i;
+            hd.MaOder = i;
+            string maHD = hoadon.layMaHD(i);
+            int mahd = 0;
+            Int32.TryParse(maHD, out mahd);
+            string luotsd = bansd.layLuotSD(txtMaBan.Text);
+            int lsd = 0;
+            Int32.TryParse(luotsd, out lsd);
+            if (ctorder.kiemTraGoiMon(i) == false)
+            {
+                hoadon.XoaHD(hd);
+                bancokhach.XoaBanCoKhach(bck);
+                orderr.XoaOder(od);
+                int luotsddung = lsd - 1;
+                bsd.LuotSD = luotsddung;
+                bansd.SuaLuotSD(bsd);
+            }
+            this.Close();
+            SoDoChinh.Show();
+        }
+
+        private void cmbMon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gbSoLuong.Visible = true;
+
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            gbSoLuong.Visible = false;
+            CTOder ct = getCTOder();
+            CTHoaDon cthd = getCTHD();
+            DoanhThu dt = getDoanhThu();
+            CTDoanhThu ctdt = getCTDoanhThu();
+            int i = 0;
+            i = int.Parse(txtSoLuong.Text);
+            ct.SoLuong = i;
+            cthd.SoLuong = i;
+            dt.Ngay = Convert.ToDateTime(dtNgay.Value.ToShortDateString());
+            ctdt.Ngay = Convert.ToDateTime(dtNgay.Value.ToShortDateString());
+            if (doanhthu.kiemTraTonTaiDT(dt.Ngay) == false)
+                doanhthu.ThemDoanhThu(dt);
+            if (ctdoanhthu.kiemTraTonTaiCTDT(ctdt.MaMon, ctdt.Ngay) == false)
+            {
+                ctdt.SoLuong = i;
+                string dongia = ctdoanhthu.layDonGia(ctdt.MaMon);
+                float dg = 0;
+                float.TryParse(dongia, out dg);
+                ctdt.TongTien = ctdt.SoLuong * dg;
+                ctdoanhthu.ThemCTDoanhThu(ctdt);
+            }
+
+            if (cthoadon.kiemTraMonHD(cthd.MaHD, cthd.MaMon) == true)
+            {
+                cthoadon.SuaCTHD(cthd);
+                float dthu = 0;
+                string doanhthuu = doanhthu.layDoanhThu(Convert.ToDateTime(dtNgay.Value.ToShortDateString()));
+                float.TryParse(doanhthuu, out dthu);
+                dt.Tong = dthu + (cthd.SoLuong * cthd.DonGia);
+                doanhthu.SuaDoanhThu(dt);
+
+                int slb = 0;
+                string slban = ctdoanhthu.laySLBan(ct.MaMon);
+                Int32.TryParse(slban, out slb);
+                int slc = 0;
+                string slcon = ctdoanhthu.laySLMonCu(ctdt.MaMon, txtMaBan.Text);
+                Int32.TryParse(slcon, out i);
+                ctdt.SoLuong = (slb + i) - slc;
+                string dongia = ctdoanhthu.layDonGia(ctdt.MaMon);
+                float dg = 0;
+                float.TryParse(dongia, out dg);
+                ctdt.TongTien = ctdt.SoLuong * dg;
+                ctdoanhthu.SuaCTDoanhThu(ctdt);
+            }
+            else
+            {
+                if (cthoadon.ThemCTHD(cthd) == false)
+                    MessageBox.Show("Không thể thêm chi tiết vào hóa đơn");
+                float dthu = 0;
+                string doanhthuu = doanhthu.layDoanhThu(Convert.ToDateTime(dtNgay.Value.ToShortDateString()));
+                float.TryParse(doanhthuu, out dthu);
+                dt.Tong = dthu + (cthd.SoLuong * cthd.DonGia);
+                doanhthu.SuaDoanhThu(dt);
+
+                int slb = 0;
+                string slban = ctdoanhthu.laySLBan(ct.MaMon);
+                Int32.TryParse(slban, out slb);
+                ctdt.SoLuong = slb + i;
+                string dongia = ctdoanhthu.layDonGia(ctdt.MaMon);
+                float dg = 0;
+                float.TryParse(dongia, out dg);
+                ctdt.TongTien = ctdt.SoLuong * dg;
+                ctdoanhthu.SuaCTDoanhThu(ctdt);
+            }
+            if (ctorder.NhapSoLuong(ct) == false)
+                MessageBox.Show("Không thể thêm số lượng");
+            txtSoLuong.Text = "";
+            binData();
+
+        }
     }
 }

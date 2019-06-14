@@ -723,10 +723,8 @@ namespace DAL_QLCP
             SqlDataAdapter da = new SqlDataAdapter();
             string dvt = "";
             string query = "Select DonViTinh from tblDSMon where MaMon='" + maMon + "'";
-            da.SelectCommand = new SqlCommand(query, connect);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "tblDSMon");
-            DataTable dt = ds.Tables["tblDSMon"];
+            DataTable dt = new DataTable();
+            dt = getDS(query);
             foreach (DataRow row in dt.Rows)
                 dvt = row["DonViTinh"].ToString();
             return dvt;

@@ -15,7 +15,7 @@ namespace QuanLiCaPhe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmFromChu());
+            Application.Run(new frmKhuA());
         }
     }
 }
