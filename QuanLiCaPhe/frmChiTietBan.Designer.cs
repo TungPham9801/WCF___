@@ -287,6 +287,7 @@
             this.dataGridViewCTOrder.Size = new System.Drawing.Size(897, 490);
             this.dataGridViewCTOrder.TabIndex = 34;
             this.dataGridViewCTOrder.Visible = false;
+            this.dataGridViewCTOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCTOrder_CellClick);
             // 
             // gbThongTin
             // 

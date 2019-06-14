@@ -40,17 +40,17 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="GetCTOder">
+      <xs:element name="GetCTOrder">
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="maBan" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="GetCTOderResponse">
+      <xs:element name="GetCTOrderResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="GetCTOderResult" nillable="true">
+            <xs:element minOccurs="0" name="GetCTOrderResult" nillable="true">
               <xs:complexType>
                 <xs:annotation>
                   <xs:appinfo>
@@ -319,11 +319,11 @@
   <wsdl:message name="ICTOrderService_getCTOder_OutputMessage">
     <wsdl:part name="parameters" element="tns:getCTOderResponse" />
   </wsdl:message>
-  <wsdl:message name="ICTOrderService_GetCTOder_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCTOder" />
+  <wsdl:message name="ICTOrderService_GetCTOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCTOrder" />
   </wsdl:message>
-  <wsdl:message name="ICTOrderService_GetCTOder_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCTOderResponse" />
+  <wsdl:message name="ICTOrderService_GetCTOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCTOrderResponse" />
   </wsdl:message>
   <wsdl:message name="ICTOrderService_kiemTraMon_InputMessage">
     <wsdl:part name="parameters" element="tns:kiemTraMon" />
@@ -406,9 +406,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/getCTOder" message="tns:ICTOrderService_getCTOder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/getCTOderResponse" message="tns:ICTOrderService_getCTOder_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCTOder">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOder" message="tns:ICTOrderService_GetCTOder_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOderResponse" message="tns:ICTOrderService_GetCTOder_OutputMessage" />
+    <wsdl:operation name="GetCTOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOrder" message="tns:ICTOrderService_GetCTOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTOrderService/GetCTOrderResponse" message="tns:ICTOrderService_GetCTOrder_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="kiemTraMon">
       <wsdl:input wsaw:Action="http://tempuri.org/ICTOrderService/kiemTraMon" message="tns:ICTOrderService_kiemTraMon_InputMessage" />
@@ -479,8 +479,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCTOder">
-      <soap:operation soapAction="http://tempuri.org/ICTOrderService/GetCTOder" style="document" />
+    <wsdl:operation name="GetCTOrder">
+      <soap:operation soapAction="http://tempuri.org/ICTOrderService/GetCTOrder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

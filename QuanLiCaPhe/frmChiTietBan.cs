@@ -127,7 +127,7 @@ namespace QuanLiCaPhe
         {
             BindingSource bindSource = new BindingSource();
             string maBan = txtMaBan.Text;
-            bindSource.DataSource = ctorder.GetCTOder1(maBan);
+            bindSource.DataSource = ctorder.GetCTOrder(maBan);
             clearbin();
             dataGridViewCTOrder.DataSource = bindSource;
             txtMaOder.DataBindings.Add("Text", bindSource, "MaOder");
@@ -136,7 +136,7 @@ namespace QuanLiCaPhe
         {
             BindingSource bindSource = new BindingSource();
             string maBan = txtMaBan.Text;
-            bindSource.DataSource = ctorder.GetCTOder1(maBan);
+            bindSource.DataSource = ctorder.GetCTOrder(maBan);
             clearbin();
             //txtMaOder.DataBindings.Add("Text", bindSource, "MaOder");
             dataGridViewCTOrder.DataSource = bindSource;
@@ -206,7 +206,8 @@ namespace QuanLiCaPhe
             dvt = ctorder.layDVT(maMon);
             ct.MaBan = txtMaBan.Text;
             ct.DonViTinh = dvt;
-            ct.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+            ct.SoLuong = 0;
+            //ct.SoLuong = Convert.ToInt32(txtSoLuong.Text);
             return ct;
         }
 
@@ -282,6 +283,8 @@ namespace QuanLiCaPhe
 
         private void btnTinhTien_Click(object sender, EventArgs e)
         {
+            gbThongTin.Visible = true;
+            dataGridViewCTOrder.Visible = true;
             BanCoKhach bck = getBanCoKhach();
             Oder od = getOder();
             CTOder ctod = getCTOder();
@@ -304,64 +307,71 @@ namespace QuanLiCaPhe
 
         private void btnBoMon_Click(object sender, EventArgs e)
         {
-            //CTOder ct = getCTOder();
-            //CTHoaDon cthd = getCTHD();
-            //CTDoanhThu ctdt = getCTDoanhThu();
-            //if (txtMaMon.Text == "")
-            //    MessageBox.Show("Vui lòng chọn món muốn bỏ!");
-            //else
-            //{
-            //    string sl = ctBO.laySLMon(txtMaMon.Text, txtMaBan.Text);
-            //    int i = 0;
-            //    i = int.Parse(sl);
-            //    int slc = int.Parse(txtSL.Text);
-            //    if (i > 1)
-            //    {
-            //        ct.SoLuong = slc - 1;
-            //        cthd.SoLuong = slc - 1;
-            //        ct.MaOder = int.Parse(txtMaOder.Text);
-            //        ct.MaMon = txtMaMon.Text;
-            //        cthd.MaMon = txtMaMon.Text;
-            //        if (ctBO.NhapSoLuong(ct) == false)
-            //            MessageBox.Show("Không thể bỏ món");
-            //        if (cthdBO.SuaCTHD(cthd) == false)
-            //            MessageBox.Show("Không thể bỏ món trong hóa đơn");
-            //    }
-            //    else
-            //    {
-            //        ct.MaMon = txtMaMon.Text;
-            //        cthd.MaMon = txtMaMon.Text;
-            //        ct.MaBan = txtMaBan.Text;
-            //        if (ctBO.XoaMon(ct) && cthdBO.XoaMon(cthd))
-            //            MessageBox.Show("Đã xóa món");
-            //        else
-            //            MessageBox.Show("Không thể xóa món");
-            //    }
-            //}
-            //ctdt.MaMon = txtMaMon.Text;
-            //int slb = 0;
-            //string slban = ctdtBO.laySLBan(ctdt.MaMon);
-            //Int32.TryParse(slban, out slb);
-            //ctdt.SoLuong = slb - 1;
-            //string dongia = ctdtBO.layDonGia(ctdt.MaMon);
-            //float dg = 0;
-            //float.TryParse(dongia, out dg);
-            //ctdt.TongTien = ctdt.SoLuong * dg;
-            //ctdtBO.SuaCTDoanhThu(ctdt);
+            CTOder ct = getCTOder();
+            CTHoaDon cthd = getCTHD();
+            CTDoanhThu ctdt = getCTDoanhThu();
+            if (cmbMon.Text == "")
+                MessageBox.Show("Vui lòng chọn món muốn bỏ!");
+            else
+            {
+                string sl = ctorder.laySLMon(cmbMon.SelectedValue.ToString(), txtMaBan.Text);
+                int i = 0;
+                i = int.Parse(sl);
+                int slc = int.Parse(txtSoLuong.Text);
+                if (i > 1)
+                {
+                    ct.SoLuong = slc - 1;
+                    cthd.SoLuong = slc - 1;
+                    ct.MaOder = int.Parse(txtMaOder.Text);
+                    ct.MaMon = cmbMon.SelectedValue.ToString();
+                    cthd.MaMon = cmbMon.SelectedValue.ToString();
+                    if (ctorder.NhapSoLuong(ct) == false)
+                        MessageBox.Show("Không thể bỏ món");
+                    if (cthoadon.SuaCTHD(cthd) == false)
+                        MessageBox.Show("Không thể bỏ món trong hóa đơn");
+                }
+                else
+                {
+                    ct.MaMon = cmbMon.SelectedValue.ToString();
+                    cthd.MaMon = cmbMon.SelectedValue.ToString();
+                    ct.MaBan = txtMaBan.Text;
+                    if (ctorder.XoaMon(ct) && cthoadon.XoaMon(cthd))
+                        MessageBox.Show("Đã xóa món");
+                    else
+                        MessageBox.Show("Không thể xóa món");
+                }
+            }
+            ctdt.MaMon = cmbMon.SelectedValue.ToString();
+            int slb = 0;
+            string slban = ctdoanhthu.laySLBan(ctdt.MaMon);
+            Int32.TryParse(slban, out slb);
+            ctdt.SoLuong = slb - 1;
+            string dongia = ctdoanhthu.layDonGia(ctdt.MaMon);
+            float dg = 0;
+            float.TryParse(dongia, out dg);
+            ctdt.TongTien = ctdt.SoLuong * dg;
+            ctdoanhthu.SuaCTDoanhThu(ctdt);
+            binData();
+            gbSoLuong.Visible = false;
         }
 
         private void btnChuyenBan_Click(object sender, EventArgs e)
         {
+            gbThongTin.Visible = true;
+            dataGridViewCTOrder.Visible = true;
             int i = 0;
             Int32.TryParse(txtMaOder.Text, out i);
             if (ctorder.kiemTraGoiMon(i) == false)
                 MessageBox.Show("Bàn " + txtMaBan.Text + " chưa có khách nên không cần chuyển.");
             else
+            {
                 gbChuyenBan.Visible = true;
+            }
         }
 
         private void btnOKChuyen_Click(object sender, EventArgs e)
         {
+            gbChuyenBan.Visible = false;
             BanCoKhach bck = getBanCoKhach();
             Oder od = getOder();
             CTOder ctod = getCTOder();
@@ -403,36 +413,45 @@ namespace QuanLiCaPhe
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            frmSoDoChinh SoDoChinh = new frmSoDoChinh();
-            string maban = txtMaBan.Text;
-            //FromSoDoChinh = new frmSoDoChinh();
-            BanCoKhach bck = getBanCoKhach();
-            Oder od = getOder();
-            CTOder ctod = getCTOder();
-            HoaDon hd = getHD();
-            CTHoaDon cthd = getCTHD();
-            BanSDNhieu bsd = getBanSDNhieu();
-            bck.MaBan = txtMaBan.Text;
-            int i = int.Parse(txtMaOder.Text);
-            od.MaOder = i;
-            hd.MaOder = i;
-            string maHD = hoadon.layMaHD(i);
-            int mahd = 0;
-            Int32.TryParse(maHD, out mahd);
-            string luotsd = bansd.layLuotSD(txtMaBan.Text);
-            int lsd = 0;
-            Int32.TryParse(luotsd, out lsd);
-            if (ctorder.kiemTraGoiMon(i) == false)
+            if (gbThongTin.Visible == false && dataGridViewCTOrder.Visible == false)
             {
-                hoadon.XoaHD(hd);
-                bancokhach.XoaBanCoKhach(bck);
-                orderr.XoaOder(od);
-                int luotsddung = lsd - 1;
-                bsd.LuotSD = luotsddung;
-                bansd.SuaLuotSD(bsd);
+                this.Close();
+                frmSoDoChinh formchinh = new frmSoDoChinh();
+                formchinh.Show();
             }
-            this.Close();
-            SoDoChinh.Show();
+            else
+            {
+                frmSoDoChinh SoDoChinh = new frmSoDoChinh();
+                string maban = txtMaBan.Text;
+                //FromSoDoChinh = new frmSoDoChinh();
+                BanCoKhach bck = getBanCoKhach();
+                Oder od = getOder();
+                CTOder ctod = getCTOder();
+                HoaDon hd = getHD();
+                CTHoaDon cthd = getCTHD();
+                BanSDNhieu bsd = getBanSDNhieu();
+                bck.MaBan = txtMaBan.Text;
+                int i = int.Parse(txtMaOder.Text);
+                od.MaOder = i;
+                hd.MaOder = i;
+                string maHD = hoadon.layMaHD(i);
+                int mahd = 0;
+                Int32.TryParse(maHD, out mahd);
+                string luotsd = bansd.layLuotSD(txtMaBan.Text);
+                int lsd = 0;
+                Int32.TryParse(luotsd, out lsd);
+                if (ctorder.kiemTraGoiMon(i) == false)
+                {
+                    hoadon.XoaHD(hd);
+                    bancokhach.XoaBanCoKhach(bck);
+                    orderr.XoaOder(od);
+                    int luotsddung = lsd - 1;
+                    bsd.LuotSD = luotsddung;
+                    bansd.SuaLuotSD(bsd);
+                }
+                this.Close();
+                SoDoChinh.Show();
+            }
         }
 
         private void cmbMon_SelectedIndexChanged(object sender, EventArgs e)
@@ -466,7 +485,7 @@ namespace QuanLiCaPhe
                 ctdoanhthu.ThemCTDoanhThu(ctdt);
             }
 
-            if (cthoadon.kiemTraMonHD(cthd.MaHD, cthd.MaMon) == true)
+            if (cthoadon.kiemTraMonHD(cthd.MaHD, cthd.MaMon))
             {
                 cthoadon.SuaCTHD(cthd);
                 float dthu = 0;
@@ -508,11 +527,20 @@ namespace QuanLiCaPhe
                 ctdt.TongTien = ctdt.SoLuong * dg;
                 ctdoanhthu.SuaCTDoanhThu(ctdt);
             }
-            if (ctorder.NhapSoLuong(ct) == false)
+            if (ctorder.ThemCTOder(ct) == false)
                 MessageBox.Show("Không thể thêm số lượng");
             txtSoLuong.Text = "";
             binData();
+        }
 
+        private void dataGridViewCTOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gbSoLuong.Visible = true;
+            int a = e.RowIndex;
+            txtMaBan.Text = dataGridViewCTOrder.Rows[a].Cells[1].Value.ToString();
+            txtMaOder.Text = dataGridViewCTOrder.Rows[a].Cells[0].Value.ToString();
+            cmbMon.Text = dataGridViewCTOrder.Rows[a].Cells[2].Value.ToString();
+            txtSoLuong.Text = dataGridViewCTOrder.Rows[a].Cells[3].Value.ToString();
         }
     }
 }

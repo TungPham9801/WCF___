@@ -892,7 +892,7 @@
             this.gbChuyenBan.Controls.Add(this.btnOKChuyen);
             this.gbChuyenBan.Controls.Add(this.txtBanChuyen);
             this.gbChuyenBan.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbChuyenBan.Location = new System.Drawing.Point(41, 126);
+            this.gbChuyenBan.Location = new System.Drawing.Point(92, 253);
             this.gbChuyenBan.Margin = new System.Windows.Forms.Padding(4);
             this.gbChuyenBan.Name = "gbChuyenBan";
             this.gbChuyenBan.Padding = new System.Windows.Forms.Padding(4);

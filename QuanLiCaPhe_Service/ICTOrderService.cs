@@ -18,7 +18,7 @@ namespace QuanLiCaPhe_Service
         [OperationContract]
         DataTable getCTOder(int maOder, string maBan);
         [OperationContract]
-        DataTable GetCTOder(string maBan);
+        DataTable GetCTOrder(string maBan);
         [OperationContract]
         bool kiemTraMon(string MaMon, string maBan, int maOder);
         [OperationContract]

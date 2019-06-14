@@ -30,7 +30,7 @@ namespace QuanLiCaPhe_Service
             return ctoder.getCTOder(maOder, maBan);
         }
 
-        public DataTable GetCTOder(string maBan)
+        public DataTable GetCTOrder(string maBan)
         {
             return ctoder.GetCTOder(maBan);
         }

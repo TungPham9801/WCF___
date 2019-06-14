@@ -27,12 +27,11 @@ namespace QuanLiCaPhe.CTOrderService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/getCTOder", ReplyAction="http://tempuri.org/ICTOrderService/getCTOderResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> getCTOderAsync(int maOder, string maBan);
         
-        // CODEGEN: Generating message contract since the wrapper name (GetCTOder) of message GetCTOderRequest does not match the default value (GetCTOder1)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/GetCTOder", ReplyAction="http://tempuri.org/ICTOrderService/GetCTOderResponse")]
-        QuanLiCaPhe.CTOrderService.GetCTOderResponse GetCTOder1(QuanLiCaPhe.CTOrderService.GetCTOderRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/GetCTOrder", ReplyAction="http://tempuri.org/ICTOrderService/GetCTOrderResponse")]
+        System.Data.DataTable GetCTOrder(string maBan);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/GetCTOder", ReplyAction="http://tempuri.org/ICTOrderService/GetCTOderResponse")]
-        System.Threading.Tasks.Task<QuanLiCaPhe.CTOrderService.GetCTOderResponse> GetCTOder1Async(QuanLiCaPhe.CTOrderService.GetCTOderRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/GetCTOrder", ReplyAction="http://tempuri.org/ICTOrderService/GetCTOrderResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> GetCTOrderAsync(string maBan);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTOrderService/kiemTraMon", ReplyAction="http://tempuri.org/ICTOrderService/kiemTraMonResponse")]
         bool kiemTraMon(string MaMon, string maBan, int maOder);
@@ -107,40 +106,6 @@ namespace QuanLiCaPhe.CTOrderService {
         System.Threading.Tasks.Task<string> layMaMonAsync(string maOrder);
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCTOder", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetCTOderRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string maBan;
-        
-        public GetCTOderRequest() {
-        }
-        
-        public GetCTOderRequest(string maBan) {
-            this.maBan = maBan;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCTOderResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetCTOderResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public System.Data.DataTable GetCTOderResult;
-        
-        public GetCTOderResponse() {
-        }
-        
-        public GetCTOderResponse(System.Data.DataTable GetCTOderResult) {
-            this.GetCTOderResult = GetCTOderResult;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ICTOrderServiceChannel : QuanLiCaPhe.CTOrderService.ICTOrderService, System.ServiceModel.IClientChannel {
     }
@@ -184,27 +149,12 @@ namespace QuanLiCaPhe.CTOrderService {
             return base.Channel.getCTOderAsync(maOder, maBan);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QuanLiCaPhe.CTOrderService.GetCTOderResponse QuanLiCaPhe.CTOrderService.ICTOrderService.GetCTOder1(QuanLiCaPhe.CTOrderService.GetCTOderRequest request) {
-            return base.Channel.GetCTOder1(request);
+        public System.Data.DataTable GetCTOrder(string maBan) {
+            return base.Channel.GetCTOrder(maBan);
         }
         
-        public System.Data.DataTable GetCTOder1(string maBan) {
-            QuanLiCaPhe.CTOrderService.GetCTOderRequest inValue = new QuanLiCaPhe.CTOrderService.GetCTOderRequest();
-            inValue.maBan = maBan;
-            QuanLiCaPhe.CTOrderService.GetCTOderResponse retVal = ((QuanLiCaPhe.CTOrderService.ICTOrderService)(this)).GetCTOder1(inValue);
-            return retVal.GetCTOderResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QuanLiCaPhe.CTOrderService.GetCTOderResponse> QuanLiCaPhe.CTOrderService.ICTOrderService.GetCTOder1Async(QuanLiCaPhe.CTOrderService.GetCTOderRequest request) {
-            return base.Channel.GetCTOder1Async(request);
-        }
-        
-        public System.Threading.Tasks.Task<QuanLiCaPhe.CTOrderService.GetCTOderResponse> GetCTOder1Async(string maBan) {
-            QuanLiCaPhe.CTOrderService.GetCTOderRequest inValue = new QuanLiCaPhe.CTOrderService.GetCTOderRequest();
-            inValue.maBan = maBan;
-            return ((QuanLiCaPhe.CTOrderService.ICTOrderService)(this)).GetCTOder1Async(inValue);
+        public System.Threading.Tasks.Task<System.Data.DataTable> GetCTOrderAsync(string maBan) {
+            return base.Channel.GetCTOrderAsync(maBan);
         }
         
         public bool kiemTraMon(string MaMon, string maBan, int maOder) {

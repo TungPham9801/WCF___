@@ -138,7 +138,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="CTHoadonServiceClient.cs" />
     <Compile Include="frmBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,9 +293,6 @@
     <None Include="Connected Services\CTDoanhThuService\CTDoanhThuService.wsdl" />
     <None Include="Connected Services\CTHoadonService\CTHoaDonService.wsdl" />
     <None Include="Connected Services\CTOrderService\CTOrderService.wsdl" />
-    <None Include="Connected Services\CTOrderService\QuanLiCaPhe.CTOrderService.GetCTOderResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\DoanhThuService\DoanhThuService.wsdl" />
     <None Include="Connected Services\HoaDonService\HoaDonService.wsdl" />
     <None Include="Connected Services\LoaiMonService\LoaiMonService.wsdl" />
