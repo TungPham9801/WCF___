@@ -31,5 +31,7 @@ namespace QuanLiCaPhe_Service
         bool SuaCTHD(CTHoaDon ct);
         [OperationContract]
         bool XoaMon(CTHoaDon ct);
+        [OperationContract]
+        DataTable LayDSCTHD(int maHoaDon);
     }
 }

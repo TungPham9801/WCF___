@@ -9,12 +9,16 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using BUS_QLCP;
 using DTO_QLCP;
+using QuanLiCaPhe.CTHoadonService;
+using QuanLiCaPhe.HoaDonService;
+using Microsoft.Reporting.WinForms;
 
 namespace QuanLiCaPhe
 {
     public partial class frmReportHD : Form
     {
-        CTHoaDonBO cthdBO = new CTHoaDonBO();
+        HoaDonServiceClient hoadon = new HoaDonServiceClient();
+        CTHoaDonServiceClient cthoadon = new CTHoaDonServiceClient();
         public frmReportHD(string text1,string text2)
         {
             InitializeComponent();
@@ -24,8 +28,26 @@ namespace QuanLiCaPhe
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            //int maod = int.Parse(txtMaOder.Text); ;
-            //string mahd = cthdBO.layMaHD(maod);
+            int maod = int.Parse(txtMaOder.Text);
+            string mahd = cthoadon.layMaHD(maod);
+            
+            
+            DataTable dt = new DataTable();
+            dt = cthoadon.LayDSCTHD(Convert.ToInt32(mahd));
+            
+            reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+            reportViewer1.LocalReport.ReportPath = "HoaDonReport.rdlc";
+                ReportDataSource source = new ReportDataSource();
+                source.Name = "DataSet1";
+            source.Value = dt;
+                //
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(source);
+
+                reportViewer1.RefreshReport();
+            
+
+
             //int i = 0;
             //Int32.TryParse(mahd, out i);
             //SqlConnection connect;
@@ -48,6 +70,14 @@ namespace QuanLiCaPhe
            frmSoDoChinh SoDoChinh=new frmSoDoChinh();         
            SoDoChinh.Show();
            this.Close();
+        }
+
+        private void frmReportHD_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'QuanLyCaPheDataSet.tblCTHoaDon' table. You can move, or remove it, as needed.
+            //this.tblCTHoaDonTableAdapter.Fill(this.QuanLyCaPheDataSet.tblCTHoaDon);
+
+           // this.reportViewer1.RefreshReport();
         }
     }
 }

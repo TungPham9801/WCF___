@@ -35,6 +35,11 @@ namespace QuanLiCaPhe_Service
             return cthoadon.layDonGia(maMon);
         }
 
+        public DataTable LayDSCTHD(int maHoaDon)
+        {
+            return cthoadon.LayDSCTHD(maHoaDon);
+        }
+
         public string layMaHD(int maOder)
         {
             return cthoadon.layMaHD(maOder);

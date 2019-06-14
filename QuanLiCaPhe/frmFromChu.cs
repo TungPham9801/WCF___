@@ -28,7 +28,7 @@ namespace QuanLiCaPhe
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             frmFormMenu frmMenu;
             frmMenu = new frmFormMenu();
             if (txtUser.Text == "" || txtPass.Text == "")

@@ -1,4 +1,5 @@
-﻿using DTO_QLCP;
+﻿
+using DTO_QLCP;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,7 +17,11 @@ namespace DAL_QLCP
             string query = "Select * from tblCTHoaDon";
             return db.getDS(query);
         }
-
+        public DataTable LayDSCTHD(int maHoaDon)
+        {
+            string query = "Select * from tblCTHoaDon where MaHD = " + maHoaDon;
+            return db.getDS(query);
+        }
         public string layMaHD(int maOder)
         {
             return db.layMaHD(maOder);

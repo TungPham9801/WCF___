@@ -68,6 +68,12 @@ namespace QuanLiCaPhe.CTHoadonService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTHoaDonService/XoaMon", ReplyAction="http://tempuri.org/ICTHoaDonService/XoaMonResponse")]
         System.Threading.Tasks.Task<bool> XoaMonAsync(DTO_QLCP.CTHoaDon ct);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTHoaDonService/LayDSCTHD", ReplyAction="http://tempuri.org/ICTHoaDonService/LayDSCTHDResponse")]
+        System.Data.DataTable LayDSCTHD(int maHoaDon);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICTHoaDonService/LayDSCTHD", ReplyAction="http://tempuri.org/ICTHoaDonService/LayDSCTHDResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayDSCTHDAsync(int maHoaDon);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +173,14 @@ namespace QuanLiCaPhe.CTHoadonService {
         
         public System.Threading.Tasks.Task<bool> XoaMonAsync(DTO_QLCP.CTHoaDon ct) {
             return base.Channel.XoaMonAsync(ct);
+        }
+        
+        public System.Data.DataTable LayDSCTHD(int maHoaDon) {
+            return base.Channel.LayDSCTHD(maHoaDon);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayDSCTHDAsync(int maHoaDon) {
+            return base.Channel.LayDSCTHDAsync(maHoaDon);
         }
     }
 }

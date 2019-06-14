@@ -136,6 +136,32 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="LayDSCTHD">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="maHoaDon" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LayDSCTHDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="LayDSCTHDResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:element name="anyType" nillable="true" type="xs:anyType" />
@@ -261,6 +287,12 @@
   <wsdl:message name="ICTHoaDonService_XoaMon_OutputMessage">
     <wsdl:part name="parameters" element="tns:XoaMonResponse" />
   </wsdl:message>
+  <wsdl:message name="ICTHoaDonService_LayDSCTHD_InputMessage">
+    <wsdl:part name="parameters" element="tns:LayDSCTHD" />
+  </wsdl:message>
+  <wsdl:message name="ICTHoaDonService_LayDSCTHD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LayDSCTHDResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICTHoaDonService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/ICTHoaDonService/DoWork" message="tns:ICTHoaDonService_DoWork_InputMessage" />
@@ -297,6 +329,10 @@
     <wsdl:operation name="XoaMon">
       <wsdl:input wsaw:Action="http://tempuri.org/ICTHoaDonService/XoaMon" message="tns:ICTHoaDonService_XoaMon_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICTHoaDonService/XoaMonResponse" message="tns:ICTHoaDonService_XoaMon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LayDSCTHD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICTHoaDonService/LayDSCTHD" message="tns:ICTHoaDonService_LayDSCTHD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICTHoaDonService/LayDSCTHDResponse" message="tns:ICTHoaDonService_LayDSCTHD_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICTHoaDonService" type="tns:ICTHoaDonService">
@@ -375,6 +411,15 @@
     </wsdl:operation>
     <wsdl:operation name="XoaMon">
       <soap:operation soapAction="http://tempuri.org/ICTHoaDonService/XoaMon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDSCTHD">
+      <soap:operation soapAction="http://tempuri.org/ICTHoaDonService/LayDSCTHD" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
